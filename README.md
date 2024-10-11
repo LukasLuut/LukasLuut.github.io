@@ -1,2 +1,1 @@
-# residentEvil
-Projeto de Resident evil
+# jogoResidentEvil
