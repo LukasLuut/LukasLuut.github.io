@@ -16,27 +16,40 @@
 
         <div>
             <div class="containerEquip">
-                <img id="arma"class="itemEquip" src="./img/faca.png"     alt="pistola">
+                <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
             </div>
             
              
                 
                 <div class="mala">
                     <div class="inventario">
-                        <img class="item" src="./img/pistola.png"     alt="pistola">
-                        <img class="item" src="./img/Matinho.png"     alt="pistola">
-                        <img class="item" src="./img/matinho2.png"     alt="pistola">
-                        <img class="item" src="./img/bala.png"     alt="pistola">
-                        <img class="item" src="./img/escopeta.png"     alt="pistola">
-                        <img class="item" src="./img/faca.png"     alt="pistola">
+                        <img class="item" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" >
+                        <img class="item" src="./img/Matinho.png"     alt="Maconha" style="cursor: pointer">
+                        <img class="item" src="./img/matinho2.png"     alt="Canabis" style="cursor: pointer">
+                        <img class="item" src="./img/bala.png"     alt="Munição" style="cursor: pointer">
+                        <img class="item" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer">
+                        <img class="item" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
                     </div>
                 </div>
                 
-                
-               
+           <dialog >
+            <div class="modal-container">
+            <div id="text" class="texto"></div>
+            <button id="btn-sim" class="btnSim">SIM</button>
+            <button id="btn-nao" class="btnNao">NÃO</button>
+            <img class="modalBox" src="./img/modal.png">
+            </div> 
+        </dialog>     
+         
 
         </div>
+        <audio id="musicaDeFundo" loop autoplay >
+            <source src="./sound/RE3 Save Room (10 min).mp3" type="audio/mpeg">
+        </audio>
 
+        <audio id="somHover">
+            <source src="./sound/RE2 Menu Start.mp3" type="audio/mpeg">
+        </audio>
     </main>
     <script src="scriptInventario.js"></script>
 </body>

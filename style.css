@@ -5,12 +5,12 @@ body{
     padding: 0;
     box-sizing: border-box ;
     font-family: 'Open Sans', sans-serif;
-    display: flex;
+    display: flex;flex-wrap: wrap;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    background: transparent; /* sequiser fundo do botao transparente */
-   
+   flex-grow: 1; flex-basis: 200px;
+    
 }
 
 body:before{
@@ -51,24 +51,23 @@ nav span{
     left: 0;
     width: 95px;
     height: 100%;
-    background: transparent;
+    background: linear-gradient(45deg, #194b4f,#33fffc);
     border-radius: 10px;
     transition: 0.5s;
-     opacity: 0.8/* ajusta transparencia do botao */
 }
 
-/* passar o mouse sobre o botão, design com cor (modificar)*/
+/* passar o mouse sobre o botão, design com cor (nao modificar, deu trabalho)*/
 nav a:nth-child(1):hover~span{
     left: 0px;
 }
 nav a:nth-child(2):hover~span{
-    left: 90px;
+    left: 110px;
 }
 nav a:nth-child(3):hover~span{
-    left: 180px;
+    left: 210px;
 }
 nav a:nth-child(4):hover~span{
-    left: 275px;
+    left: 310px;
 }
 nav a:nth-child(5):hover~span{
     left: 380px;
