@@ -5,19 +5,26 @@
 
 }
 
-main{
+main{position: relative;
+    /*border: solid 10px red;*/
     display: flex;
+    width:auto;
+    height: 99vh;
 }
 .mala{
+    position: absolute;
+   /* border: solid 10px rgb(0, 255, 34);*/
     display: flex;
     align-items: end;
     justify-content: flex-end;
+    width: 100%;
+    height: 100%;
 }
 
 
 
 .fundo {
-    position: relative;
+    position: absolute;
     width:100vw;
     height: 99vh;
     
@@ -37,19 +44,18 @@ main{
 
 
 .inventario{
-
+   /* border: solid 10px rgb(246, 255, 0);*/
     
     padding-top: 0.2%;
     padding-left: 0.3%;
     width: 28.3%;
     height: 68%;
-    position: absolute;
     margin-right: 1%;
     margin-bottom: 1%;
     
 }
 
-#vida{
+.barraVida{
     position: absolute;
     margin-left: 16.5%;
     margin-top: 2.5%;
@@ -59,24 +65,33 @@ main{
 }
 .jill{
     position: absolute;
-    margin-left:0.3%;
-    margin-top:-0.2%;
+    margin-left:0.5%;
+    margin-top:-1.1%;
     width: 15%;
-    height: 29%;
+    height: 31%;
 }
 
-.equip{
 
-position: absolute;
-  
-   margin-bottom: 35%;
-   margin-right: 20%;
-   
-    
-}
 .itemEquip{
-    width: 74%;
-    height: 40%;
-    
+    position: absolute;
+    width: 50%;
+    height: 16%;
+    margin-left: 70%;
+    margin-top: 14%;
 }
 
+.containerEquip{
+    margin-left: 40%;
+   /* border: solid 10px rgb(0, 21, 255);*/
+    position: absolute;
+    width: 30%;
+    height: 100%;
+
+}
+
+.bg{
+    /*border: solid 10px rgb(255, 0, 238);*/
+position: absolute;
+width: 100%;
+height: 100%;
+}

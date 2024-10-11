@@ -13,7 +13,7 @@ itemPistola={
     capacidadeCarregador:15,
     municaoAtual:15,
     reserva:45,
-    src:"./img/escopeta.png"
+    src:"./img/pistola.png"
 }
 
 const equipa=document.getElementById("arma")
