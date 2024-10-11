@@ -5,46 +5,78 @@
 
 }
 
-
-#mala{
+main{
+    display: flex;
+}
+.mala{
     display: flex;
     align-items: end;
-    border: solid 2px red;
-    position: relative;
     justify-content: flex-end;
-    
-    
 }
 
+
+
 .fundo {
+    position: relative;
     width:100vw;
-    height: 99vh; 
+    height: 99vh;
+    
+    
+    
     
 }
 
 .item {
     padding: 0;
-    margin:0;
-    position: relative; 
-    width: 255px; 
-    height: 140px; 
+    margin:0.4%;
+    width: 48.2%; 
+    height: 23.7% 
     
     
 }
 
 
 .inventario{
-    padding: 5px;
-    padding-left: 5px;
-    flex-direction:row;
-    flex-wrap: wrap;
-    display: flex;
-    border: solid 4px red;
-    width: 540px;
-    height: 615px;
+
+    
+    padding-top: 0.2%;
+    padding-left: 0.3%;
+    width: 28.3%;
+    height: 68%;
     position: absolute;
-    margin-right: 21px;
-    margin-bottom: 24px;
-    gap: 10px; /* Remova qualquer espaçamento entre os itens */
-    align-items: flex-start; /* Alinha os itens no topo */
+    margin-right: 1%;
+    margin-bottom: 1%;
+    
 }
+
+#vida{
+    position: absolute;
+    margin-left: 16.5%;
+    margin-top: 2.5%;
+    height:23%;
+    width:35%;
+    
+}
+.jill{
+    position: absolute;
+    margin-left:0.3%;
+    margin-top:-0.2%;
+    width: 15%;
+    height: 29%;
+}
+
+.equip{
+
+position: absolute;
+  
+   margin-bottom: 35%;
+   margin-right: 20%;
+   
+    
+}
+.itemEquip{
+    width: 74%;
+    height: 40%;
+    
+}
+
