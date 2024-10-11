@@ -1,4 +1,20 @@
 
+       /////////////////////////////////////////////////////////////////////
+       /////////////////////////////////////////////////////////////////////
+       //--------------------VOLUME DA MÚSICA-------------------------//
+       const musicaDeFundo = document.getElementById('musicaDeFundo');
+       musicaDeFundo.volume = 0.1; // 50% de volume
+
+       const somHover = document.getElementById("somHover")
+       somHover.volume=0.05;
+
+       const somClick= document.getElementById("somClick")
+       somClick.volume=0.05
+      /////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////
+
+
+
 //função para subistituir img da arma, pode ser implementado para funções javascript
 function equip(item1,item2){
 item1.src=item2.src
@@ -15,6 +31,18 @@ itemPistola={
 //busca o local onde está equipada arma
 const equipa=document.getElementById("arma")
 
+
+
+
+        
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////
+///////////////////>>AQUI ALGUMAS FUNCIONALIDADES DO MENU<</////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
 //serve para salvar o objeto clicado no inventário
 let selectedImage=null;
 //equip(equipa,itemPistola)
@@ -27,21 +55,6 @@ const imagens = document.querySelectorAll('.item');
 const btnSim=document.getElementById("btn-sim")
 const btnNao=document.getElementById("btn-nao")
 const html=document.getElementById("text")
-
-
-        /////////////////////////////////////////////////////////////////////
-       /////////////////////////////////////////////////////////////////////
-       //--------------------VOLUME DA MÚSICA-------------------------//
-       const musicaDeFundo = document.getElementById('musicaDeFundo');
-       musicaDeFundo.volume = 0.1; // 50% de volume
-
-       const somHover = document.getElementById("somHover")
-       somHover.volume=0.2;
-      /////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////
-
-
-
 
         //adiciona um evento de clique em cada imagem
         imagens.forEach(imagem => {
@@ -56,7 +69,9 @@ const html=document.getElementById("text")
                 //mostra o modal depois de atualizad o texto que será apresentado
                 modal.showModal()
                 
-                
+                somClick.currentTime = 0.3; // Reinicia o som
+        somClick.play();
+
                 //se clicar no botão sim, equipa o item
                 //no momento só equipa o item de testes
                 btnSim.onclick=function(){
@@ -72,11 +87,13 @@ const html=document.getElementById("text")
                 };
                
             });
-
+            //aqui acontece o som em cima de cada imagem
+            //deve ser dentro do forEach para que ocorra em cada imagem
             imagem.addEventListener('mouseover', function() {
                 somHover.currentTime = 0.3; // Reinicia o som
                 somHover.play(); // Toca o som
             });
+            
         });
        
 
