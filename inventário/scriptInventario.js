@@ -1,9 +1,18 @@
+window.addEventListener('load', () => {
+    const fadeImage = document.getElementById('bg-inicial');
+    fadeImage.style.opacity = 1; // Altera a opacidade para 1 ao carregar a página
+    
+});
 
        /////////////////////////////////////////////////////////////////////
        /////////////////////////////////////////////////////////////////////
        //--------------------VOLUME DA MÚSICA-------------------------//
+       
+       const musicaBG = document.getElementById('musicaTelaStart');
+       musicaBG.volume = 0.2;
+       
        const musicaDeFundo = document.getElementById('musicaDeFundo');
-       musicaDeFundo.volume = 0.1; // 50% de volume
+       musicaDeFundo.volume = 0.5; // 50% de volume
 
        const somHover = document.getElementById("somHover")
        somHover.volume=0.05;
@@ -12,6 +21,47 @@
        somClick.volume=0.05
       /////////////////////////////////////////////////////////////////////
       /////////////////////////////////////////////////////////////////////
+
+//Aqui são as varáveis para alterar o tipo de display de cada parte do HTML
+const trocaPagina1=document.getElementById('display-Inicial')
+const trocaPagina2=document.getElementById('display-inventario')
+
+
+const somStartRe=document.getElementById('re-btn')
+const btnStart=document.getElementById('btnStart')
+
+btnStart.addEventListener('click', () => {
+    const fadeImage = document.getElementById('bg-inicial');
+    fadeImage.style.opacity = 0; // para sumir a imagem
+    somStartRe.currentTime = 0.6; //  o som
+        somStartRe.play();
+
+        const element = document.documentElement; // O elemento que deseja colocar em tela cheia
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) { // Firefox
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) { // Chrome, Safari e Opera
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) { // IE/Edge
+            element.msRequestFullscreen();
+        }
+
+    setTimeout(() => {
+
+        //Aqui o display é alterado
+        trocaPagina1.style.display='none' 
+        trocaPagina2.style.display='flex' 
+        musicaDeFundo.play()
+    }, 3500);
+}); 
+
+
+
+
+
+
+
 
 
 
@@ -40,8 +90,18 @@ const equipa=document.getElementById("arma")
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-///////////////////>>AQUI ALGUMAS FUNCIONALIDADES DO MENU<</////////////////////////
+///////////////////////////>>AQUI FUNCIONALIDADES DO MENU<</////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
 
 //serve para salvar o objeto clicado no inventário
 let selectedImage=null;
@@ -50,11 +110,12 @@ let selectedImage=null;
 //modal de confirmação para equipar
 //pode ser implementado para apresentar descrição dos itens e apresentar 
 //itens dropados pelos mostros mortos
-const modal= document.querySelector("dialog")
+const confirmEquip= document.getElementById("confirm-equipar")
 const imagens = document.querySelectorAll('.item');
 const btnSim=document.getElementById("btn-sim")
 const btnNao=document.getElementById("btn-nao")
 const html=document.getElementById("text")
+const modalMap=document.getElementById('modal-map')
 
         //adiciona um evento de clique em cada imagem
         imagens.forEach(imagem => {
@@ -67,7 +128,7 @@ const html=document.getElementById("text")
 
                
                 //mostra o modal depois de atualizad o texto que será apresentado
-                modal.showModal()
+                confirmEquip.showModal()
                 
                 somClick.currentTime = 0.3; // Reinicia o som
         somClick.play();
@@ -77,13 +138,13 @@ const html=document.getElementById("text")
                 btnSim.onclick=function(){
                     if(selectedImage){
                         equip(equipa,selectedImage)
-                        modal.close()
+                        confirmEquip.close()
                     }
                 }
 
                 //quando clica em NÃO, fecha o Modal
                 btnNao.onclick = function() {
-                    modal.close() // Fecha o modal
+                    confirmEquip.close() // Fecha o modal
                 };
                
             });
@@ -98,9 +159,9 @@ const html=document.getElementById("text")
        
 
 
+       
 
-
-
+        
 
 
 

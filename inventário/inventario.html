@@ -7,22 +7,64 @@
     <title>inventário</title>
 </head>
 <body>
-    
-    <main >
+
+
+
+                    <!--PÁGINA INICIAL DE START GAME-->
+<div class="pagina-inicial" id="display-Inicial">
+    <div><!--Audio de fundo-->
         
+
+        <audio id="re-btn">
+            <source src="./sound/resident-evil-1-7-title-voice_skZz5tTj.mp3" type="audio/mpeg">
+            </audio>
+
+
+
+    </div>
+    <!--Plano de fundo-->
+    <div class="bgRE" >
+        <img src="./img/Resident Evil.jpg" alt="Resident Evil" id="bg-inicial">
+    </div>
+
+        <!-- Botão Start !-->
+        <div class="btnStart-container">
+            <button id="btnStart" class="button-49" role="button" >Start</button>
+        </div>
+    </div> 
+</div>
+
+
+
+
+                        <!--PÁGINA DO INVENTÁRIO-->
+    <main class="main-inv" id="display-inventario">
+        
+        <!--imagem de personagem e barra de vida-->
         <img class="jill" src="./img/Jill.webp">
-        <img class="barraVida" id="vida" src="./img/orange.gif" alt="vida verde"> 
+        <img class="barraVida" id="vida" src="./img/green.gif" alt="vida verde"> 
         <div class="BxBg"><img class="bg" src="./Resident Evil 2 Inventory Screen.png" alt="inventário RE2"></div>
 
+
+        <!--Caixa da arma equipada-->
         <div>
-            <div class="containerEquip">
-                <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
+            <div class="containerEquip">                
+                <div>
+                    <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
+                </div>
             </div>
-            
-             
-                
+
+            <!--caixa do medicamento equipado-->
+            <div class="container-vida">
+                <img id="vida" class="itemEquip" src="./img/Matinho.png"     alt="vida">
+            </div>
+
+
+
+                <!--Mochila dos itens-->
                 <div class="mala">
-                    <div class="inventario">
+                    <div class="inventario">                        
+                        <img class="item" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
                         <img class="item" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" >
                         <img class="item" src="./img/Matinho.png"     alt="Maconha" style="cursor: pointer">
                         <img class="item" src="./img/matinho2.png"     alt="Canabis" style="cursor: pointer">
@@ -31,30 +73,66 @@
                         <img class="item" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
                     </div>
                 </div>
-                
-           <dialog >
+        </div>
+
+        <!--Box de interação com o botão NAV-MAPA-->
+        <div>
+            <dialog id="modal-map">
+                <div class="box-inferior-container">
+                    <img class="box-inferior" src="./img/Box-inferior.png" alt="">
+                </div>
+            </dialog>
+        </div>
+
+
+        <!--Nav do menu do inventário-->
+ <div class="nav-inv">
+    <div class="nav1" style="cursor: pointer"><p >File</p></div>
+    <div class="nav1" style="cursor: pointer"><p>Itens</p></div>
+    <div class="nav1" style="cursor: pointer"><p>Mapa</p></div>
+    <div class="nav1" style="cursor: pointer"><p>Exit</p></div>
+
+</div>
+
+
+        <!--Modal de confirmação-->        
+        <dialog id="confirm-equipar">
             <div class="modal-container">
-            <div id="text" class="texto"></div>
-            <button id="btn-sim" class="btnSim">SIM</button>
-            <button id="btn-nao" class="btnNao">NÃO</button>
-            <img class="modalBox" src="./img/modal.png">
+                <div id="text" class="texto"></div>
+                <button id="btn-sim" class="btnSim">SIM</button>
+                <button id="btn-nao" class="btnNao">NÃO</button>
+                <img class="modalBox" src="./img/modal.png">
             </div> 
         </dialog>     
-         
+        
+    
 
-        </div>
-        <audio id="musicaDeFundo" loop autoplay >
-            <source src="./sound/RE3 Save Room (10 min).mp3" type="audio/mpeg">
+
+
+
+
+        <!--Audio do inventário-->
+        <audio id="musicaTelaStart" loop autoplay >
+            <source src="./sound/Resident Evil Main Title Theme (Corp. Umbrella).mp3" type="audio/mpeg">
         </audio>
 
+        <audio id="musicaDeFundo" loop  >
+            <source src="./sound/RE3 Save Room (10 min).mp3" type="audio/mpeg">
+        </audio>
+        
         <audio id="somHover">
             <source src="./sound/RE2 Menu Start.mp3" type="audio/mpeg">
         </audio>
-
+        
         <audio id="somClick">
             <source src="./sound/RE1 Menu Start.mp3" type="audio/mpeg">
         </audio>
+
+       
     </main>
     <script src="scriptInventario.js"></script>
 </body>
 </html>
+
+
+

@@ -1,0 +1,83 @@
+*{
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box ;
+}
+
+.map-container{
+     
+    width: 100%; /* conteiner pai */
+    height:1200px;
+    border: solid 4px rgb(25, 0, 255); 
+    position: relative;
+    
+}
+#mapa-jogo {
+    
+    
+    width: 100%; /* conteiner pai */
+    height: 100%; /* altura ajustada  */
+    display: block; /* Faz a imagem do mapa ser um bloco */
+    
+}
+
+/*areas interativas */
+.area1, .area2, .area3 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute; /* areas dentro do contêiner pai (.map-container) */
+    background-color: rgba(255, 0, 0, 0.0); /* fundo invisivel para clicar */
+    cursor: pointer; /* parte do cursor para clicar */
+}
+
+/* posicao cada area com base nas coordenadas que transformei para top e left */
+.area1 { top: 50%; left: 28%; width: 15%; height: 14%; 
+    /**/border: solid 4px red; 
+    position: absolute;
+    
+    
+   
+} 
+
+
+
+
+
+
+
+
+.area2 { top: 471px; left: 590px; width: 202px; height: 184px; }
+.area3 { top: 347px; left: 792px; width: 214px; height: 79px; } 
+
+/* estilo para as imagens que aparecem depois da  vitoria (nao funciona)*/
+.popup-image {
+    position: absolute; 
+    display: none; /* As imagens começam como invisiveis (e continuaram, pois nao funciona) */
+    max-width: 200px; /* limita a largura maxima das imagens  */
+    border: 2px solid #000; /* add uma borda em torno das imagens */
+}
+
+/* posicao especifica das imagens de vitoria para cada area */
+.popup-image1 { top: 300px; left: 500px; }
+.popup-image2 { top: 500px; left: 650px; }
+.popup-image3 { top: 350px; left: 850px; } 
+
+
+/* resumo: */
+
+/* .map-container: serve como um conteiner para o mapa, permitindo que as reas sejam  posicionadas direito */
+
+/* #mapa-jogo: define como a imagem do mapa se comporta no tamanho */
+
+/* .area1 area2 area3: areas interativas do mapa, invisiveis mas clicaveis*/
+
+/* popup-image: controla como as imagens que aparecem apos exibir as vitorias, definindo o posicionamento */
+
+/* popup-image1 popup-image2 popup-image3: especifica  as posiçoes das imagens de vitoria para cada area clicada */
+
+.player{
+    height: 80%;
+}
