@@ -75,7 +75,7 @@ function start(){
                 musicaBG.pause()
                 escreverTexto(textoA); // Inicia a escrita 
                 maquinaDeEscrever.play();
-            }, 500);
+            }, 3500);
         }
 
 
@@ -98,10 +98,10 @@ function start(){
 /////////////////////////////////////////////////////////////////////
 //--------------------VOLUME DA MÚSICA-------------------------//
 const fechar=document.getElementById('fechar')
-fechar.volume=0.05;
+fechar.volume=0.1;
 
 const glitchSom=document.getElementById('glitch')
-glitchSom.volume=0.02;
+glitchSom.volume=0.1;
 glitchSom.playbackRate=0.9;
 
 const maquinaDeEscrever=document.getElementById('maquina-de-escrever')
@@ -112,16 +112,16 @@ const somStartRe=document.getElementById('re-btn')
 somStartRe.volume=0.1
 
 const musicaBG = document.getElementById('musicaTelaStart');
-musicaBG.volume = 0.1;
+musicaBG.volume = 0.3;
 
 const musicaDeFundo = document.getElementById('musicaDeFundo');
-musicaDeFundo.volume = 0.2; 
+musicaDeFundo.volume = 0.3; 
 
 const somHover = document.getElementById("somHover")
-somHover.volume=0.05;
+somHover.volume=0.1;
 
 const somClick= document.getElementById("somClick")
-somClick.volume=0.05
+somClick.volume=0.1
 
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////

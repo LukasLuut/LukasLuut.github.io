@@ -321,8 +321,10 @@ height: 100%;
 
 
 .modalBox{
-    display: flex;
-    position: relative
+  position: relative;
+  width: 100%;
+  
+    
 }
 
 .texto, .btnSim, .btnNao{
@@ -337,6 +339,8 @@ height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    
 }
 
 .btnSim, .btnNao{
@@ -354,11 +358,12 @@ height: 100%;
     
     position: absolute; /* Fica fixo em relação à tela */
     z-index: 1000; /* Acima de outros elementos */
-    left: 5%;
+    left: 4%;
     top: 35%;
-    width: 60.3%; /* Largura total da tela */
-    height: 27.%; /* Altura total da tela */
+    width: 59.9%; /* Largura total da tela */
+    /* Altura total da tela */
     background-color: black;
+    
 }
 
 
