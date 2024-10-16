@@ -26,15 +26,57 @@ function escreverTexto(texto) {
 
     escrever(); // Inicia a escrita
 }
+
+
+//Array deve ser o inventário do jogador 
+//alt está dentro do loop das imagens do inventário que busca a propriedade "alt" no HTML
 function equipar(array, alt) {
     for (let i = 0; i < array.length; i++) {
         if (array[i].alt === alt) {
+            if(array[i].classe==='arma'){
             const divExistente=document.getElementById('div-arma')
             divExistente.innerHTML= `<img id="arma" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+            }
+            if(array[i].classe==='medicamento'){
+                const divExistente=document.getElementById('div-vida')
+            divExistente.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+            }
+            if(array[i].classe==='munição'){
+                const divExistente=document.getElementById('div-vida')
+            divExistente.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+            }
 
-            break;
+
         }}}
 
+function start(){ 
+            const fadeImage = document.getElementById('bg-inicial');
+            fadeImage.style.opacity = 0; // para sumir a imagem
+            somStartRe.currentTime = 0.6; //  o som
+                somStartRe.play();
+        
+                const element = document.documentElement; // O elemento que deseja colocar em tela cheia
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) { // Firefox
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) { // Chrome, Safari e Opera
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) { // IE/Edge
+                    element.msRequestFullscreen();
+                }
+        
+            setTimeout(() => {
+        
+                //Aqui o display é alterado
+                trocaPagina1.style.display='none' 
+                trocaPagina2.style.display='flex' 
+                musicaDeFundo.play()
+                musicaBG.pause()
+                escreverTexto(textoA); // Inicia a escrita 
+                maquinaDeEscrever.play();
+            }, 500);
+        }
 
 
 
@@ -55,6 +97,9 @@ function equipar(array, alt) {
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 //--------------------VOLUME DA MÚSICA-------------------------//
+const fechar=document.getElementById('fechar')
+fechar.volume=0.05;
+
 const glitchSom=document.getElementById('glitch')
 glitchSom.volume=0.02;
 glitchSom.playbackRate=0.9;
@@ -81,6 +126,9 @@ somClick.volume=0.05
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 //-----------------DECLARAÇÃO DE VÁRIÁVEIS DO HTML-----------------//
+const modalMapa=document.getElementById('modalMap')
+
+
 
 //Aqui são as varáveis para alterar o tipo de display de cada parte do HTML
 const trocaPagina1=document.getElementById('display-Inicial')
@@ -114,16 +162,6 @@ const imagemContainer=document.getElementById('inventario-container')
 const textoA = "28 de setembro. Luz do dia... Os monstros tomaram conta da cidade. \nDe alguma forma... ainda estou viva...";
 
 
-
-
-
-
-
-
-
-
-
-
 //Botão de Start
 //Com som
 //Faz o BG sumir aos poucos 
@@ -131,45 +169,14 @@ const textoA = "28 de setembro. Luz do dia... Os monstros tomaram conta da cidad
 //Deixa a tela em fullScreen
 //Muda o display de alguns containers 
 //Da play na música do inventário
-btnStart.addEventListener('click', () => {
-    const fadeImage = document.getElementById('bg-inicial');
-    fadeImage.style.opacity = 0; // para sumir a imagem
-    somStartRe.currentTime = 0.6; //  o som
-        somStartRe.play();
 
-        const element = document.documentElement; // O elemento que deseja colocar em tela cheia
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) { // Firefox
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) { // Chrome, Safari e Opera
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) { // IE/Edge
-            element.msRequestFullscreen();
-        }
 
-    setTimeout(() => {
-
-        //Aqui o display é alterado
-        trocaPagina1.style.display='none' 
-        trocaPagina2.style.display='flex' 
-        musicaDeFundo.play()
-        musicaBG.pause()
-        escreverTexto(textoA); // Inicia a escrita 
-        maquinaDeEscrever.play();
-    }, 500);
-}); 
-
+btnStart.addEventListener('click', () => {start()});
 btnStart.addEventListener('mouseover', function() {
     glitchSom.currentTime = 0.5; // Reinicia o som
     glitchSom.play(); // Toca o som
     
 });
-
-
-
-
-
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -207,13 +214,17 @@ let selectedImage=null;
                 btnSim.onclick=function(){
                     if(selectedImage){
                         equipar(armas,selectedImage)
+                        somClick.currentTime = 0.3; // Reinicia o som
+                        somClick.play();
                         confirmEquip.close()
                     }
                 }
 
                 //quando clica em NÃO, fecha o Modal
                 btnNao.onclick = function() {
-                    confirmEquip.close() // Fecha o modal
+                    confirmEquip.close() 
+                    fechar.play()
+                    fechar.currentTime = 0.6;// Fecha o modal
                 };
                
             });
@@ -226,9 +237,10 @@ let selectedImage=null;
             });
             
         });
+////////////////////////////////////////////////////////////////////////////////////
+//////////////////////>> AQUI MENU NAV DO INVENTÁRIO <</////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
-       
-        // Audio do menu do inventário, FILE, MAPA, ITEM, EXIT
         menuNav.forEach(div => {
             div.addEventListener('mouseover', function() {
                 somHover.currentTime = 0.3; // Reinicia o som
@@ -238,46 +250,33 @@ let selectedImage=null;
             div.addEventListener('click', function() {
                 somClick.currentTime = 0.3; // Reinicia o som
                 somClick.play(); // Toca o som de clique
+                if(div.id==='mapClick'){
+                    modalMapa.showModal()
+                    window.addEventListener('click', function(event) {
+                        if (event.target === modalMapa) {
+                            fechar.play()
+                            fechar.currentTime = 0.5;
+                            modalMapa.close(); // Fecha o modal
+                        }
+                    });
+                }
+
+                //aqui ele para várias coisas 
+                if(div.id==='exit'){
+                    trocaPagina1.style.display='flex' 
+                    trocaPagina2.style.display='none'
+                    musicaDeFundo.pause()
+                    musicaBG.play()
+                    const fadeImage = document.getElementById('bg-inicial');
+                    fadeImage.style.opacity = 1;
+                    maquinaDeEscrever.pause()
+                    const container = document.getElementById('box-dialogo-p');
+                    container.innerHTML=''
+                    
+                }
+                
             });
         });
-
-
-
-
-        
-       
-        
-       
-
-
-
-
-
-        
-
-      
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -382,6 +381,26 @@ const armas=[
         src:"./img/erva.png"
         
     },
+    {
+        classe:'medicamento',
+        alt:"Erva extraída",
+        capacidadeCarregador:'',
+        municaoAtual:'',
+        reserva:'',
+        descricao:'',
+        src:"./img/erva extraída.png"
+        
+    },
+    {
+        classe:'munição',
+        alt:"Munição",
+        capacidadeCarregador:'',
+        municaoAtual:'',
+        reserva:'25',
+        descricao:'',
+        src:"./img/bala.png"
+        
+    },
     
 
 ]  
@@ -422,3 +441,51 @@ const armas=[
 
     turnoDoInimigo(); // passar para inimigo
 }*/
+
+
+////////////////////////////////////////////////////////////////////////////////////
+//////////////////////>>AQUI INTERAÇÃO COM MODAL DO MAPA<<//////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+
+
+// inicia funcao depois de clicar:
+function iniciarBatalha(areaId) {
+    alert("Você iniciou uma batalha na " + areaId + "!"); 
+    
+    // Simula a batalha (falta arrumar a funcao de batalha):
+    setTimeout(function() {
+        alert("Você venceu a batalha!"); 
+        mostrarVitoria(areaId);
+    }, 2000); // duracao da batalha esta em2 segundos (modificar)
+}
+
+// funcao que mostra a imagem de vitoria com area clicada:
+
+function mostrarVitoria(areaId) {
+    if (areaId === 'area1') {
+        document.querySelector('.popup-image1').style.display = 'block';
+    } else if (areaId === 'area2') {
+        document.querySelector('.popup-image2').style.display = 'block';
+    } else if (areaId === 'area3') {
+        document.querySelector('.popup-image3').style.display = 'block';
+    }
+}
+
+//aqui serve para comandar o player no mapa
+//ele vai para a area clicada e apaga da area anterior no HTML
+const areas = document.querySelectorAll('.areas');
+function moverJogador(quadrado){
+
+areas.forEach(area=>{
+    area.innerHTML= area.innerHTML.replace(/<img.*?>/, '')
+})
+const jogadorImg =`<img class="player" src="/img/Jill.webp" ></img>`
+quadrado.innerHTML += jogadorImg;
+}
+
+areas.forEach(area => {
+    area.addEventListener('click', function() {
+        moverJogador(area);
+    });
+});

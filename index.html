@@ -47,7 +47,7 @@
 
 
         <!--Caixa da arma equipada-->
-        <div>
+        <div><!--aqui não precisavam 2 divs, mas agora já fiz o CSS e não vou mudar-->
             <div class="containerEquip">                
                 <div id="div-arma">
                     <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
@@ -55,8 +55,8 @@
             </div>
 
             <!--caixa do medicamento equipado-->
-            <div class="container-vida">
-                <img id="vida" class="itemEquip" src="./img/erva.png"     alt="vida">
+            <div class="container-vida" id="div-vida">
+                <img id="vida" class="itemEquip" src="./img/erva.png"     alt="Erva">
             </div>
 
 
@@ -70,27 +70,44 @@
                         <div class="item" ><p class="ammun"></p><img class="item1" src="./img/erva extraída.png"     alt="Erva extraída" style="cursor: pointer"></div>
                         <div class="item" ><p class="ammun">24</p><img class="item1" src="./img/bala.png"     alt="Munição" style="cursor: pointer"></div>
                         <div class="item" ><p class="ammun">7</p><img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer"></div>
-                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/faca.png"     alt="Faca" style="cursor: pointer"></div>
+                        <div class="item" ></div>
+                        <div class="item" ></div>
                     </div>
                 </div>
         </div>
 
         <!--Box-grande-->
         <div class="box-dialogo-g-container">
-            <div id="box-dialogo-g">
+            
 
+
+            <!--AQUI É O MODAL DO MAPA E SEUS CONTEÚDOS-->
+            <div >              
+                <dialog id="modalMap" class="box-dialogo-g" >
+
+                     <!-- cada area gerou um 'link' invisivel para executar uma funcao(tentar juntar do trabalho)-->
+                    <a href="javascript:void(0)" class="area1 areas" id="area1"> </a>
+                    <a href="javascript:void(0)" class="area2 areas" id="area2"></a>
+                    <a href="javascript:void(0)" class="area3 areas" id="area3"></a>
+                    
+
+
+                                                                        <!--Agora ta-->
+                    <!-- aqui era para aparecer as imagens, mas nao esta funcionando TT -->
+                    <img src="/img/erva.png" alt="Vitória Área 1" class="popup-image popup-image1">
+                    <img src="/img/escopeta.png" alt="Vitória Área 2" class="popup-image popup-image2">
+                    <img src="/img/bala.png" alt="Vitória Área 3" class="popup-image popup-image3">
+   
+                    <img id="mapa" src="./map/mapa.png" alt="mapa" style="cursor: move">
+                </dialog>
             </div>
-        </div>
-
-
-
-        <!--Box-menor-->
-        <div id="box-dialogo-p">
-
 
         </div>
 
 
+
+        <!--Box-menor, onde devem aparecer os diálogos-->
+        <div id="box-dialogo-p"> </div>
 
 
         
@@ -100,8 +117,8 @@
  <div class="nav-inv">
     <div class="nav1" style="cursor: pointer">File</div>
     <div class="nav1" style="cursor: pointer">Itens</div>
-    <div class="nav1" style="cursor: pointer">Mapa</div>
-    <div class="nav1" style="cursor: pointer">Exit</div>
+    <div id="mapClick" class="nav1" style="cursor: pointer">Mapa</div>
+    <div id="exit" class="nav1" style="cursor: pointer">Exit</div>
 
 </div>
 
@@ -124,6 +141,9 @@
 
 
         <!--Audio do inventário-->
+        <audio id="fechar">
+            <source src="./sound/RE2 Menu Exit.mp3" type="audio/mpeg">
+        </audio>
         <audio id="glitch">
             <source src="./sound/glitch.mp3" type="audio/mpeg">
         </audio>
@@ -147,7 +167,7 @@
         </audio>
 
        
-    </main><!--modal de interação com o botão NAV-MAPA-->
+    </main><!--modal SEM USO ATÉ AGORA-->
         
     <dialog id="modal-map">
         <div class="box-inferior-container">

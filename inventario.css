@@ -4,6 +4,7 @@
     box-sizing: border-box;
 
 }
+/*///////////////////<<<-CSS Página Inicial->>>//////////////////////////*/
 
 #display-Inicial{
     display: flex;
@@ -49,7 +50,7 @@
   /* botoes(modificar) */
   
   
-  /*-------------------------------------------------------------------------------------------*/
+  /*--------------------------------Botão Start-----------------------------------------------------------*/
   
   .btnStart-container{
       
@@ -176,7 +177,7 @@
 
 
 
-/*///////////////////<<<-HTML INVENTÁRIO->>>//////////////////////////*/
+/*///////////////////<<<-CSS INVENTÁRIO->>>//////////////////////////*/
 body{
     background-color: black;
 }
@@ -401,33 +402,37 @@ height: 100%;
 
 
 
-#modal-map{
-    
-    top: 27.4%;
-    left: 0.2%;
-    right: 5%;
-    border: solid 5px rgb(5, 1, 70);
-    background-color: black;
-    
-    height: 100%;
-    width: 100%;
-    border-right: solid 0px red ;
-
-}
 .box-inferior{
   width: 10%;
   height: 20%;
 }
 
-
-#box-dialogo-g{
+#mapa{
   position: absolute;
-  /*border: solid 5px red;*/
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 100%;
+
+
+}
+
+
+
+.box-dialogo-g{
+  
+  position: relative;
+ /* border: solid 5px red;*/
   z-index: 2002;
-  width: 67.7%;
-  height: 41%;
-  top:29.9%;
-  left:1%
+  width: 68.2%;
+  height: 68%;
+  top:29%;
+  left:0.8%;
+  overflow: hidden;
+  background-color: #000000;
+  border:solid 5px rgb(168, 160, 160);
+  border-radius: 1%;
+  
 }
 
 
@@ -444,3 +449,78 @@ height: 100%;
   padding:1%;
   font-size: 40px;
 }
+
+
+
+/*////////////////////////////////<< A Partir daqui, CSS do modal Mapa >>//////////////////////////////////////////////////////*/
+
+
+.area1, .area2, .area3 {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute; /* areas dentro do contêiner pai (.map-container) */
+  background-color: rgba(255, 0, 0, 0.0); /* fundo invisivel para clicar */
+  cursor: pointer; /* parte do cursor para clicar */
+}
+
+/* posicao cada area com base nas coordenadas que transformei para top e left */
+.area1 { top: 49.9%; left: 28%; width: 15%; height: 14%; border: solid 4px red; }
+.area2 { position: absolute; top: 65%; left: 44.5%; width:16.3%; height: 26.7%; border: solid 4px red; }
+.area3 { position: absolute; top: 60%; left: 60.6%; width:27%; height: 26.1%; border: solid 4px red; } 
+
+/* estilo para as imagens que aparecem depois da  vitoria (nao funciona)*/
+.popup-image {
+  z-index: 2;
+  position: absolute; 
+  display: none; /* As imagens começam como invisiveis (e continuaram, pois nao funciona) */
+  height: 15%;
+  width:15% ; /* limita a largura maxima das imagens  */
+  border: 2px solid #000; /* add uma borda em torno das imagens */
+}
+
+/* posicao especifica das imagens de vitoria para cada area */
+.popup-image1 { top: 35%; left: 29%; }
+.popup-image2 { top: 50%; left: 47%; }
+.popup-image3 { top: 45%; left: 70%; } 
+
+.area1:hover ~ .popup-image1 {
+  display: block;
+}
+
+.area2:hover ~ .popup-image2 {
+  display: block;
+}
+
+.area3:hover ~ .popup-image3 {
+  display:block;
+}
+
+
+/* resumo: */
+
+/* .map-container: serve como um conteiner para o mapa, permitindo que as reas sejam  posicionadas direito */
+
+/* #mapa-jogo: define como a imagem do mapa se comporta no tamanho */
+
+/* .area1 area2 area3: areas interativas do mapa, invisiveis mas clicaveis*/
+
+/* popup-image: controla como as imagens que aparecem apos exibir as vitorias, definindo o posicionamento */
+
+/* popup-image1 popup-image2 popup-image3: especifica  as posiçoes das imagens de vitoria para cada area clicada */
+
+.player{
+  height: 50%;
+}
+
+
+/* contêiner para a imagem e as áreas interativas */
+
+
+/* Imagem do mapa */
+
+
+
+
+/* Mostrando a imagem quando o mouse passar */

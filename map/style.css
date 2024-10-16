@@ -8,7 +8,7 @@
 .map-container{
      
     width: 100%; /* conteiner pai */
-    height:1200px;
+    height:100%;
     border: solid 4px rgb(25, 0, 255); 
     position: relative;
     
@@ -18,13 +18,12 @@
     
     width: 100%; /* conteiner pai */
     height: 100%; /* altura ajustada  */
-    display: block; /* Faz a imagem do mapa ser um bloco */
+    display: flex; /* Faz a imagem do mapa ser um bloco */
     
 }
 
 /*areas interativas */
 .area1, .area2, .area3 {
-    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,26 +43,34 @@
 
 
 
-
-
-
-
-
-.area2 { top: 471px; left: 590px; width: 202px; height: 184px; }
-.area3 { top: 347px; left: 792px; width: 214px; height: 79px; } 
+.area2 { position: absolute; top: 65%; left: 44%; width:17%; height: 26.7%; border: solid 4px rgb(238, 255, 0); }
+.area3 { position: absolute; top: 60%; left: 61%; width:26%; height: 26.7%; border: solid 4px rgb(0, 17, 255); } 
 
 /* estilo para as imagens que aparecem depois da  vitoria (nao funciona)*/
 .popup-image {
     position: absolute; 
     display: none; /* As imagens começam como invisiveis (e continuaram, pois nao funciona) */
-    max-width: 200px; /* limita a largura maxima das imagens  */
+    height: 15%;
+    width:15% ; /* limita a largura maxima das imagens  */
     border: 2px solid #000; /* add uma borda em torno das imagens */
 }
 
 /* posicao especifica das imagens de vitoria para cada area */
-.popup-image1 { top: 300px; left: 500px; }
-.popup-image2 { top: 500px; left: 650px; }
-.popup-image3 { top: 350px; left: 850px; } 
+.popup-image1 { top: 35%; left: 29%; }
+.popup-image2 { top: 50%; left: 47%; }
+.popup-image3 { top: 45%; left: 70%; } 
+
+.area1:hover ~ .popup-image1 {
+    display: block;
+}
+
+.area2:hover ~ .popup-image2 {
+    display: block;
+}
+
+.area3:hover ~ .popup-image3 {
+    display:block;
+}
 
 
 /* resumo: */
@@ -81,3 +88,14 @@
 .player{
     height: 80%;
 }
+
+
+/* contêiner para a imagem e as áreas interativas */
+
+
+/* Imagem do mapa */
+
+
+
+
+/* Mostrando a imagem quando o mouse passar */
