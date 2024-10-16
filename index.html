@@ -49,48 +49,59 @@
         <!--Caixa da arma equipada-->
         <div>
             <div class="containerEquip">                
-                <div>
+                <div id="div-arma">
                     <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
                 </div>
             </div>
 
             <!--caixa do medicamento equipado-->
             <div class="container-vida">
-                <img id="vida" class="itemEquip" src="./img/Matinho.png"     alt="vida">
+                <img id="vida" class="itemEquip" src="./img/erva.png"     alt="vida">
             </div>
 
 
 
                 <!--Mochila dos itens-->
                 <div class="mala">
-                    <div class="inventario">                        
-                        <img class="item" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
-                        <img class="item" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" >
-                        <img class="item" src="./img/Matinho.png"     alt="Maconha" style="cursor: pointer">
-                        <img class="item" src="./img/matinho2.png"     alt="Canabis" style="cursor: pointer">
-                        <img class="item" src="./img/bala.png"     alt="Munição" style="cursor: pointer">
-                        <img class="item" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer">
-                        <img class="item" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
+                    <div class="inventario" id="inventario-container">   <!--Classe ammun é o texto da munição na tag P-->                     
+                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/faca.png"     alt="Faca" style="cursor: pointer"></div>
+                        <div class="item" ><p class="ammun">15</p><img class="item1" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" ></div>
+                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/erva.png"     alt="Erva" style="cursor: pointer"></div>
+                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/erva extraída.png"     alt="Erva extraída" style="cursor: pointer"></div>
+                        <div class="item" ><p class="ammun">24</p><img class="item1" src="./img/bala.png"     alt="Munição" style="cursor: pointer"></div>
+                        <div class="item" ><p class="ammun">7</p><img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer"></div>
+                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/faca.png"     alt="Faca" style="cursor: pointer"></div>
                     </div>
                 </div>
         </div>
 
-        <!--Box de interação com o botão NAV-MAPA-->
-        <div>
-            <dialog id="modal-map">
-                <div class="box-inferior-container">
-                    <img class="box-inferior" src="./img/Box-inferior.png" alt="">
-                </div>
-            </dialog>
+        <!--Box-grande-->
+        <div class="box-dialogo-g-container">
+            <div id="box-dialogo-g">
+
+            </div>
         </div>
+
+
+
+        <!--Box-menor-->
+        <div id="box-dialogo-p">
+
+
+        </div>
+
+
+
+
+        
 
 
         <!--Nav do menu do inventário-->
  <div class="nav-inv">
-    <div class="nav1" style="cursor: pointer"><p >File</p></div>
-    <div class="nav1" style="cursor: pointer"><p>Itens</p></div>
-    <div class="nav1" style="cursor: pointer"><p>Mapa</p></div>
-    <div class="nav1" style="cursor: pointer"><p>Exit</p></div>
+    <div class="nav1" style="cursor: pointer">File</div>
+    <div class="nav1" style="cursor: pointer">Itens</div>
+    <div class="nav1" style="cursor: pointer">Mapa</div>
+    <div class="nav1" style="cursor: pointer">Exit</div>
 
 </div>
 
@@ -111,7 +122,14 @@
 
 
 
+
         <!--Audio do inventário-->
+        <audio id="glitch">
+            <source src="./sound/glitch.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="maquina-de-escrever">
+            <source src="./sound/máquina de escrever.mp3" type="audio/mpeg">
+        </audio>
         <audio id="musicaTelaStart" loop autoplay >
             <source src="./sound/Resident Evil Main Title Theme (Corp. Umbrella).mp3" type="audio/mpeg">
         </audio>
@@ -129,7 +147,13 @@
         </audio>
 
        
-    </main>
+    </main><!--modal de interação com o botão NAV-MAPA-->
+        
+    <dialog id="modal-map">
+        <div class="box-inferior-container">
+            <img class="box-inferior" src="./img/Box-inferior.png" alt="">
+        </div>
+    </dialog>
     <script src="scriptInventario.js"></script>
 </body>
 </html>
