@@ -50,7 +50,7 @@
         <div><!--aqui não precisavam 2 divs, mas agora já fiz o CSS e não vou mudar-->
             <div class="containerEquip">                
                 <div id="div-arma">
-                    <img id="arma" class="itemEquip" src="./img/faca.png"     alt="pistola" style="cursor: pointer;">
+                    <div class="armaEquipada" ><p class="ammunEquip">15</p><img id="arma" class="itemEquip" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" ></div>
                 </div>
             </div>
 
@@ -64,30 +64,31 @@
                 <!--Mochila dos itens-->
                 <div class="mala">
                     <div class="inventario" id="inventario-container">   <!--Classe ammun é o texto da munição na tag P-->                     
-                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/faca.png"     alt="Faca" style="cursor: pointer"></div>
-                        <div class="item" ><p class="ammun">15</p><img class="item1" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer" ></div>
-                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/erva.png"     alt="Erva" style="cursor: pointer"></div>
-                        <div class="item" ><p class="ammun"></p><img class="item1" src="./img/erva extraída.png"     alt="Erva extraída" style="cursor: pointer"></div>
-                        <div class="item" ><p class="ammun">24</p><img class="item1" src="./img/bala.png"     alt="Munição" style="cursor: pointer"></div>
-                        <div class="item" ><p class="ammun">7</p><img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer"></div>
-                        <div class="item" ></div>
-                        <div class="item" ></div>
+                        <img class="item1" src="./img/faca.png"     alt="Faca" style="cursor: pointer">
+                        <img class="item1" src="./img/pistola.png"     alt="Pistola"  style="cursor: pointer">
+                        <img class="item1" src="./img/erva.png"     alt="Erva" style="cursor: pointer">
+                        <img class="item1" src="./img/erva extraída.png"     alt="Erva extraída" style="cursor: pointer">
+                        <img class="item1" src="./img/bala.png"     alt="Munição" style="cursor: pointer">
+                        <img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer">
+                        <img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer">
+                        <img class="item1" src="./img/escopeta.png"     alt="Escopeta" style="cursor: pointer">
+                        
                     </div>
                 </div>
         </div>
 
+
+
         <!--Box-grande-->
         <div class="box-dialogo-g-container">
             
-
-
             <!--AQUI É O MODAL DO MAPA E SEUS CONTEÚDOS-->
             <div >              
                 <dialog id="modalMap" class="box-dialogo-g" >
 
                      <!-- cada area gerou um 'link' invisivel para executar uma funcao(tentar juntar do trabalho)-->
                     <a href="javascript:void(0)" class="area1 areas" id="area1"> </a>
-                    <a href="javascript:void(0)" class="area2 areas" id="area2"></a>
+                    <a href="javascript:void(0)" class="area2 areas" id="area2"><img class="player" src="/img/Jill.webp" ></img></a>
                     <a href="javascript:void(0)" class="area3 areas" id="area3"></a>
                     
 
@@ -112,6 +113,18 @@
 
 
 
+
+        <div id="box-dialogo-m"> 
+            <div id="img-box-container">
+                
+            </div>
+        </div>
+
+
+
+
+
+
         <!--Box-menor, onde devem aparecer os diálogos-->
         <div id="box-dialogo-p"> </div>
 
@@ -121,7 +134,7 @@
 
         <!--Nav do menu do inventário-->
  <div class="nav-inv">
-    <div class="nav1" style="cursor: pointer">File</div>
+    <div id="file" class="nav1" style="cursor: pointer">File</div>
     <div id="mapClick" class="nav1" style="cursor: pointer">Mapa</div>
     <div id="exit" class="nav1" style="cursor: pointer">Exit</div>
 

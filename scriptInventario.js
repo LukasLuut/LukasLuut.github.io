@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
 
 function escreverTexto(texto, caixa, tempo) {
     
-    
+    caixa.innerHTML=''
     let index = 0;
 
     function escrever() {
@@ -34,16 +34,16 @@ function equipar(array, alt) {
     for (let i = 0; i < array.length; i++) {
         if (array[i].alt === alt) {
             if(array[i].classe==='arma'){
-            const divExistente=document.getElementById('div-arma')
-            divExistente.innerHTML= `<img id="arma" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+            
+            divArmaEquipada.innerHTML= `<div class="armaEquipada" ><p class="ammunEquip">${array[i].municaoAtual}</p><img id="arma" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;"></div>`
             }
             if(array[i].classe==='medicamento'){
-                const divExistente=document.getElementById('div-vida')
-            divExistente.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+                
+            divEquipamentoEquipado.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
             }
             if(array[i].classe==='munição'){
-                const divExistente=document.getElementById('div-vida')
-            divExistente.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
+                
+            divEquipamentoEquipado.innerHTML= `<img id="vida" class="itemEquip" src="${array[i].src}"     alt="${array[i].alt}" style="cursor: pointer;">`
             }
 
 
@@ -81,9 +81,6 @@ function start(){
 
 
 
-
-
-
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 //--------------------VOLUME DA MÚSICA-------------------------//
@@ -116,6 +113,13 @@ somClick.volume=0.1
 /////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////
 //-----------------DECLARAÇÃO DE VÁRIÁVEIS DO HTML-----------------//
+
+const divArmaEquipada=document.getElementById('div-arma')
+const divEquipamentoEquipado=document.getElementById('div-vida')
+
+const atualizarMunicao=document.querySelector('.ammunEquip')
+
+
 const modalMapa=document.getElementById('modalMap')
 
 const btnEquip= document.querySelectorAll('.btn-equip')
@@ -146,11 +150,15 @@ const btnEquipar=document.getElementById("equipar")
 const btnExaminar=document.getElementById("examinar")
 const btnDescartar=document.getElementById("descartar")
 
+const boxExaminar=document.getElementById('img-box-container')
+
  const startBattle=document.getElementById('startBattle')
 
 const modalMap=document.getElementById('modal-map')
 const imagemContainer=document.getElementById('inventario-container')
 
+//Areas clicaveis do MODAL MAPA 
+const areas = document.querySelectorAll('.areas');
 
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -195,13 +203,13 @@ btnStart.addEventListener('mouseover', function() {
 //pode ser implementado para apresentar descrição dos itens e apresentar 
 //itens dropados pelos mostros mortos
 
-
+let descImg=null
 //serve para salvar o objeto clicado no inventário
 let selectedImage=null;
         //adiciona um evento de clique em cada imagem
         imagens.forEach(imagem => {
             imagem.addEventListener('click', function() {
-
+                descImg=this
                 selectedImage=this.alt//aqui vai vir o objeto da imagem clicada, no futuro
                 //agora só está salvando o objeto já foi criado a cima
 
@@ -217,7 +225,8 @@ let selectedImage=null;
 
                  
 
-                //Botões que aparecem quando clica em algum item do inventário
+                // MENU DE INTERAÇÃO QUANDO CLICA EM UMA IMAGEM DO INVENTÁRIO
+
                 btnEquip.forEach(btn=>{
                     //Som desses botões HOVER
                     btn.addEventListener('mouseover', function(){
@@ -229,27 +238,12 @@ let selectedImage=null;
                         somClick.currentTime = 0.3; // Reinicia o som
                         somClick.play();
                     });
+                    
                 });
 
 
 
-
-
-                    //Fecha o Modal se eu clicar fora da caixa do modal
-                 window.addEventListener('click', function(event) {
-                    if (event.target === confirmEquip) {
-                        fechar.play()
-                        fechar.currentTime = 0.5;
-                        confirmEquip.close(); // Fecha o modal
-                    }
-                });
-
-
-
-
-
-                //se clicar no botão sim, equipa o item
-                //no momento só equipa o item de testes
+                // EQUIPAR
                 btnEquipar.onclick=function(){
                     if(selectedImage){
                         equipar(armas,selectedImage)
@@ -258,6 +252,47 @@ let selectedImage=null;
                         confirmEquip.close()
                     }
                 }
+
+
+                // EXAMINAR
+                btnExaminar.onclick=function(){
+
+                    //Adiciona a imagem que foi clicada no BOX-M 
+                    boxExaminar.innerHTML=`<img id="img-box-m" src="${imagem.src}">`
+                    somClick.currentTime = 0.3; // Reinicia o som
+                        somClick.play();                        
+                        confirmEquip.close()
+
+                        //Aqui serve para buscar o item com alt igual da imagem para pegar a descrição 
+                        for (let i = 0; i < armas.length; i++) {
+                            if (armas[i].alt === imagem.alt) {
+                                escreverTexto( armas[i].descricao,container, 50)
+                            }}
+                             
+                            //ESC para apagar o HTML da imagem e o texto do box-P
+                            document.addEventListener('keydown', function(event) {
+                                // Verifica se a tecla pressionada é a tecla "Esc"
+                                if (event.key === 'Escape') {
+                                    boxExaminar.innerHTML=""
+                                    container.innerHTML=""
+                                }
+                            });
+                       
+                       
+                }
+
+                // DESCARTAR
+
+                btnDescartar.onclick=function(){
+                    imagem.remove();
+                    fechar.play()
+                    fechar.currentTime = 0.5;
+                    confirmEquip.close()
+                }
+
+
+
+
 
                
                
@@ -269,11 +304,24 @@ let selectedImage=null;
                 somHover.play(); // Toca o som
                 
             });
+
+                 //Fecha o Modal se eu clicar fora da caixa do modal
+                 window.addEventListener('click', function(event) {
+                    if (event.target === confirmEquip) {
+                        fechar.play()
+                        fechar.currentTime = 0.5;
+                        confirmEquip.close(); // Fecha o modal
+                    }
+                });
             
         });
+
+
 ////////////////////////////////////////////////////////////////////////////////////
 //////////////////////>> AQUI MENU NAV DO INVENTÁRIO <</////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
+
+
 let primeiroStart=true
 
         menuNav.forEach(div => {
@@ -303,11 +351,6 @@ let primeiroStart=true
                             }
                         });
 
-
-
-
-
-
                     window.addEventListener('click', function(event) {
                         if (event.target === modalMapa) {
                             fechar.play()
@@ -330,6 +373,13 @@ let primeiroStart=true
                     container.innerHTML=''
                     
                 }
+
+                if(div.id==='file'){
+
+                    armas[0].municaoAtual-=1
+                    atualizarMunicao.innerHTML=armas[0].municaoAtual
+                }
+
                 
             });
         });
@@ -403,7 +453,7 @@ const armas=[
         capacidadeCarregador:15,
         municaoAtual:15,
         reserva:45,
-        descricao:'',
+        descricao:'Compacta e letal, ela permite disparos rápidos em momentos de desespero. Cada bala é preciosa, exigindo que você mire com precisão, pois os mortos-vivos estão sempre à espreita.',
         src:"./img/pistola.png"
         
     },
@@ -413,7 +463,7 @@ const armas=[
         capacidadeCarregador:7,
         municaoAtual:7,
         reserva:45,
-        descricao:'',
+        descricao:'A escopeta é a arma definitiva para enfrentar hordas de zumbis. Com seu cano longo e potente, ela oferece um poder de parada devastador, capaz de eliminar múltiplos inimigos com um único disparo.',
         src:"./img/escopeta.png"
         
     },
@@ -423,7 +473,7 @@ const armas=[
         capacidadeCarregador:'',
         municaoAtual:'',
         reserva:'',
-        descricao:'',
+        descricao:'A faca é uma arma silenciosa e letal, perfeita para a sobrevivência em um mundo tomado por zumbis. Compacta e fácil de manusear',
         src:"./img/faca.png"
         
     },
@@ -433,7 +483,7 @@ const armas=[
         capacidadeCarregador:'',
         municaoAtual:'',
         reserva:'',
-        descricao:'',
+        descricao:'As ervas medicinais são aliadas essenciais na luta pela sobrevivência. Elas oferecem uma fonte valiosa de cura e revitalização',
         src:"./img/erva.png"
         
     },
@@ -443,7 +493,7 @@ const armas=[
         capacidadeCarregador:'',
         municaoAtual:'',
         reserva:'',
-        descricao:'',
+        descricao:'Erva medicinal tratada e adiciona a uma bandagem, tem maior eficácia no tratamento de feridas',
         src:"./img/erva extraída.png"
         
     },
@@ -453,7 +503,7 @@ const armas=[
         capacidadeCarregador:'',
         municaoAtual:'',
         reserva:'25',
-        descricao:'',
+        descricao:`Munição de Pistola 9mm com munição reserva`,
         src:"./img/bala.png"
         
     },
@@ -530,7 +580,7 @@ function mostrarVitoria(areaId) {
 
 //aqui serve para comandar o player no mapa
 //ele vai para a area clicada e apaga da area anterior no HTML
-const areas = document.querySelectorAll('.areas');
+
 function moverJogador(quadrado){
 
 areas.forEach(area=>{
