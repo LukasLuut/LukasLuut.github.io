@@ -10,17 +10,17 @@ window.addEventListener('load', () => {
 ///////////////////////////////>> AQUI FUNÇÕES <<///////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
-function escreverTexto(texto) {
+function escreverTexto(texto, caixa, tempo) {
     
-    const container = document.getElementById('box-dialogo-p');
+    
     let index = 0;
 
     function escrever() {
         if (index < texto.length) {
             const char = texto.charAt(index);
-            container.innerHTML += char === '\n' ? '<br>' : char; // Adiciona uma quebra de linha se necessário
+            caixa.innerHTML += char === '\n' ? '<br>' : char; // Adiciona uma quebra de linha se necessário
             index++;
-            setTimeout(escrever, 108); // Ajuste a velocidade aqui
+            setTimeout(escrever, tempo); // Ajuste a velocidade aqui
         }
     }
 
@@ -73,20 +73,10 @@ function start(){
                 trocaPagina2.style.display='flex' 
                 musicaDeFundo.play()
                 musicaBG.pause()
-                escreverTexto(textoA); // Inicia a escrita 
+                escreverTexto(textoA, container, 108); // Inicia a escrita 
                 maquinaDeEscrever.play();
-            }, 3500);
+            }, 3000);
         }
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -128,7 +118,9 @@ somClick.volume=0.1
 //-----------------DECLARAÇÃO DE VÁRIÁVEIS DO HTML-----------------//
 const modalMapa=document.getElementById('modalMap')
 
+const btnEquip= document.querySelectorAll('.btn-equip')
 
+const boxDanger=document.getElementById('box-danger-div')
 
 //Aqui são as varáveis para alterar o tipo de display de cada parte do HTML
 const trocaPagina1=document.getElementById('display-Inicial')
@@ -150,16 +142,30 @@ const confirmEquip= document.getElementById("confirm-equipar")
 const imagens = document.querySelectorAll('.item1');
 
 //botão SIM e NÃO do Modal
-const btnSim=document.getElementById("btn-sim")
-const btnNao=document.getElementById("btn-nao")
+const btnEquipar=document.getElementById("equipar")
+const btnExaminar=document.getElementById("examinar")
+const btnDescartar=document.getElementById("descartar")
 
-//texto que aparece no modal de confirmação 
-const html=document.getElementById("text")
+ const startBattle=document.getElementById('startBattle')
+
 const modalMap=document.getElementById('modal-map')
 const imagemContainer=document.getElementById('inventario-container')
 
 
+
+////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////>> AQUI VARIÁVEIS DE TEXTO <</////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+
 const textoA = "28 de setembro. Luz do dia... Os monstros tomaram conta da cidade. \nDe alguma forma... ainda estou viva...";
+const textoAberturaDeMapa="Cuidado, as áreas contornadas em veremlho estão infestadas de mortos-vivos. \nVocê deve eliminar-los para receber a recompensa de cada área.\nTente sobreviver..."
+
+
+
+
+
+
 
 
 //Botão de Start
@@ -200,7 +206,7 @@ let selectedImage=null;
                 //agora só está salvando o objeto já foi criado a cima
 
                 //apresenta o texto alt baseado na imagem clicada
-                html.innerHTML=`<p>Você deseja equipar ${imagem.alt}?</p>`
+               
 
                
                 //mostra o modal depois de atualizad o texto que será apresentado
@@ -209,9 +215,42 @@ let selectedImage=null;
                 somClick.currentTime = 0.3; // Reinicia o som
                  somClick.play();
 
+                 
+
+                //Botões que aparecem quando clica em algum item do inventário
+                btnEquip.forEach(btn=>{
+                    //Som desses botões HOVER
+                    btn.addEventListener('mouseover', function(){
+                        somHover.currentTime = 0.3; // Reinicia o som
+                        somHover.play();
+                     });
+                    //som Click
+                    btn.addEventListener('click', function(){
+                        somClick.currentTime = 0.3; // Reinicia o som
+                        somClick.play();
+                    });
+                });
+
+
+
+
+
+                    //Fecha o Modal se eu clicar fora da caixa do modal
+                 window.addEventListener('click', function(event) {
+                    if (event.target === confirmEquip) {
+                        fechar.play()
+                        fechar.currentTime = 0.5;
+                        confirmEquip.close(); // Fecha o modal
+                    }
+                });
+
+
+
+
+
                 //se clicar no botão sim, equipa o item
                 //no momento só equipa o item de testes
-                btnSim.onclick=function(){
+                btnEquipar.onclick=function(){
                     if(selectedImage){
                         equipar(armas,selectedImage)
                         somClick.currentTime = 0.3; // Reinicia o som
@@ -220,12 +259,7 @@ let selectedImage=null;
                     }
                 }
 
-                //quando clica em NÃO, fecha o Modal
-                btnNao.onclick = function() {
-                    confirmEquip.close() 
-                    fechar.play()
-                    fechar.currentTime = 0.6;// Fecha o modal
-                };
+               
                
             });
             //aqui acontece o som em cima de cada imagem
@@ -240,6 +274,7 @@ let selectedImage=null;
 ////////////////////////////////////////////////////////////////////////////////////
 //////////////////////>> AQUI MENU NAV DO INVENTÁRIO <</////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
+let primeiroStart=true
 
         menuNav.forEach(div => {
             div.addEventListener('mouseover', function() {
@@ -252,6 +287,27 @@ let selectedImage=null;
                 somClick.play(); // Toca o som de clique
                 if(div.id==='mapClick'){
                     modalMapa.showModal()
+
+                
+                    if(primeiroStart){
+                        startBattle.showModal()
+                        primeiroStart=false
+                        }
+                        escreverTexto(textoAberturaDeMapa,boxDanger,50)
+                        window.addEventListener('click', function(event) {
+                            if (event.target === startBattle) {
+                                fechar.play()
+                                fechar.currentTime = 0.5;
+                                startBattle.close(); // Fecha o modal
+                                boxDanger.innerHTML=''
+                            }
+                        });
+
+
+
+
+
+
                     window.addEventListener('click', function(event) {
                         if (event.target === modalMapa) {
                             fechar.play()
@@ -479,13 +535,19 @@ function moverJogador(quadrado){
 
 areas.forEach(area=>{
     area.innerHTML= area.innerHTML.replace(/<img.*?>/, '')
+    
 })
 const jogadorImg =`<img class="player" src="/img/Jill.webp" ></img>`
 quadrado.innerHTML += jogadorImg;
 }
+//para não repetir o aviso vermelho ao clicar no mapa 2x
+
 
 areas.forEach(area => {
     area.addEventListener('click', function() {
         moverJogador(area);
+        
     });
 });
+   //Fecha o Modal se eu clicar fora da caixa do modal
+   

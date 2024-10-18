@@ -97,7 +97,13 @@
                     <img src="/img/erva.png" alt="Vitória Área 1" class="popup-image popup-image1">
                     <img src="/img/escopeta.png" alt="Vitória Área 2" class="popup-image popup-image2">
                     <img src="/img/bala.png" alt="Vitória Área 3" class="popup-image popup-image3">
-   
+                        
+                        <dialog id="startBattle">
+                            <img id="danger" src="./img/Danger.png">
+                            <img id="box-danger" src="./img/modal.png">
+                            <div id="box-danger-div"></div>
+                        </dialog>
+
                     <img id="mapa" src="./map/mapa.png" alt="mapa" style="cursor: move">
                 </dialog>
             </div>
@@ -116,7 +122,6 @@
         <!--Nav do menu do inventário-->
  <div class="nav-inv">
     <div class="nav1" style="cursor: pointer">File</div>
-    <div class="nav1" style="cursor: pointer">Itens</div>
     <div id="mapClick" class="nav1" style="cursor: pointer">Mapa</div>
     <div id="exit" class="nav1" style="cursor: pointer">Exit</div>
 
@@ -126,10 +131,10 @@
         <!--Modal de confirmação-->        
         <dialog id="confirm-equipar">
             <div class="modal-container">
-                <div id="text" class="texto"></div>
-                <button id="btn-sim" class="btnSim">SIM</button>
-                <button id="btn-nao" class="btnNao">NÃO</button>
-                <img class="modalBox" src="./img/modal.png">
+                <div class="btn-equip" id="equipar">Equipar</div>
+                <div class="btn-equip" id="descartar">Descartar</div>
+                <div class="btn-equip" id="examinar">Examinar</div>
+                <img class="modalBox" id="imagem-modal-equip" src="./img/modal.png">
             </div> 
         </dialog>     
         
@@ -167,12 +172,9 @@
         </audio>
 
        
-    </main><!--modal SEM USO ATÉ AGORA-->
+    </main>
         
-    <dialog id="modal-map">
-        <div class="box-inferior-container">
-            <img class="box-inferior" src="./img/Box-inferior.png" alt="">
-        </div>
+    
     </dialog>
     <script src="scriptInventario.js"></script>
 </body>

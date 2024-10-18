@@ -31,17 +31,18 @@
 .bgRE{
     position: absolute;
     z-index: 2000;
-    top: -20%;
+    top: -15%;
     overflow: hidden;
-    height: 90%;
-    left: 0%;
-    
-  
+    width:100% ;
+    height: 100%;
+    left: 0%;  
   }
   
   #bg-inicial {
     opacity: 0; /* Começa invisível */
     transition: opacity 5s ease; /* Define a transição de 2 segundos */
+    width:100% ;
+    height: 100%;
   }
   
   .hidden {
@@ -57,12 +58,12 @@
       height: 100%;
       width: auto;
       align-content: center;
-      z-index: 3000;
+      z-index: 2000;
   }
   .button-49{
     z-index: 3000;
     cursor: pointer;
-    top:30%;
+    top:20%;
     left: -15%;
   }
   
@@ -265,6 +266,8 @@ height: 96%;
     width:35%;
     
 }
+
+
 .jill{
     position: absolute;
     margin-left:0.5%;
@@ -292,6 +295,9 @@ height: 96%;
     top:8%;
     left: 15.5%;
 }
+
+
+
 .containerEquip{
     
     margin-left: 40%;
@@ -316,55 +322,80 @@ height: 100%;
     transform: scale(1.1); 
 }
 
+#imagem-modal-equip
+{position: absolute;
+  top:0%;
+  width: 100%;
+  height: 100%;
 
-
+}
 
 
 .modalBox{
   position: relative;
-  width: 100%;
-  
-    
 }
 
-.texto, .btnSim, .btnNao{
-    position: absolute;
-    z-index: 1001;
-    
-}
-.texto{
-    color: aliceblue;
-}
 .modal-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+      
 }
 
-.btnSim, .btnNao{
-    margin-top: 10%;
+.btn-equip{
+  position: absolute;
+  z-index: 1001;
+  color: aliceblue;  
 }
 
-.btnNao{
-    margin-left: 5%;
+#equipar, #descartar, #examinar{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:absolute;
+  top:4%;
+  border: solid 4px rgb(133, 133, 133);
+  width: 98%;
+  height: 32%;
+  font-size: 30px;
+  background-color: #111111;
+  border-radius: 1%;  
 }
-.btnSim{
-    margin-left: -5%;
+
+#equipar:hover, #descartar:hover, #examinar:hover{
+  background-color: #c22626;
+  transform: scale(1.02);
 }
+
+
+#descartar{
+  top: 66%;
+}
+
+#examinar{
+  top: 35%;
+}
+
+
+
 
 #confirm-equipar{
     
     position: absolute; /* Fica fixo em relação à tela */
     z-index: 1000; /* Acima de outros elementos */
-    left: 4%;
-    top: 35%;
-    width: 59.9%; /* Largura total da tela */
+    left: 55%;
+    top: 28.6%;
+    height: 30%;
+    width: 15%; /* Largura total da tela */
     /* Altura total da tela */
-    background-color: black;
-    
+    border-color: #7c7c7c;
+    border-radius:2% ;    
 }
+
+
+
+
 
 
 .nav-inv{
@@ -377,8 +408,6 @@ height: 100%;
     justify-content: end;
     margin-right: 1%;
     gap: 1%;
-    
-
 }
 
 .nav1{
@@ -396,21 +425,6 @@ height: 100%;
 }
 
 
-
-.box-inferior-container{
-  position: absolute;
-  border: solid 5px rgb(255, 0, 0);
-    width: 100%;
-    height: 100%;
-
-}
-
-
-
-.box-inferior{
-  width: 10%;
-  height: 20%;
-}
 
 #mapa{
   position: absolute;
@@ -453,6 +467,7 @@ height: 100%;
   color:darkgray;
   padding:1%;
   font-size: 40px;
+  overflow: auto;
 }
 
 
@@ -529,3 +544,47 @@ height: 100%;
 
 
 /* Mostrando a imagem quando o mouse passar */
+
+#startBattle{
+  position:absolute;
+  top:29.6%;
+  left: 1%;
+  background-color: rgba(255, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 67%;
+  width: 67.8%;
+  border-radius: 1%;
+
+}
+
+#danger , #box-danger{
+  position: absolute;
+}
+
+#danger {
+  top: 5%;
+  width: 42%;
+  height: 59%;
+}
+
+#box-danger{
+  top:66%;
+  width: 90%;
+  height: 30%;
+  ;
+}
+
+#box-danger-div{
+  position: absolute;
+  top:66%;
+  width: 90%;
+  height: 29%;
+  color:darkgray;
+  padding:1.5%;
+  font-size: 35px;
+  overflow: auto;
+  
+}
