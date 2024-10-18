@@ -266,7 +266,7 @@ let selectedImage=null;
                         //Aqui serve para buscar o item com alt igual da imagem para pegar a descrição 
                         for (let i = 0; i < armas.length; i++) {
                             if (armas[i].alt === imagem.alt) {
-                                escreverTexto( armas[i].descricao,container, 50)
+                                escreverTexto( armas[i].descricao,container, 30)
                             }}
                              
                             //ESC para apagar o HTML da imagem e o texto do box-P
